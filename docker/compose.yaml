@@ -1,0 +1,31 @@
+# ─────────────────────────────────────────────────────────────────
+# ollama — Docker Compose merge fragment
+#
+# This file is merged into the main docker-compose.yaml by sovctl:
+#   sovctl package install ollama
+#
+# Manual usage:
+#   docker compose -f docker-compose.yaml -f packages/ollama/docker/compose.yaml up -d
+# ─────────────────────────────────────────────────────────────────
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: sovereign-ollama
+    restart: unless-stopped
+    ports:
+      - "${OLLAMA_PORT:-11434}:11434"
+    environment:
+      - TZ=${TZ:-UTC}
+    volumes:
+      - ollama-data:/data
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.ollama.rule=Host(`ollama.${SOV_HOST:-sovereign.local}`)
+      - traefik.http.routers.ollama.entrypoints=websecure
+      - traefik.http.routers.ollama.tls.certresolver=letsencrypt
+    networks:
+      - sovereign
+
+volumes:
+  ollama-data:
+    driver: local
