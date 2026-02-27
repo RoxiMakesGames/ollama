@@ -1,9 +1,9 @@
 {
-  "$schema": "https://sovereign.dev/schemas/package/1.0.0",
+  "$schema": "https://raw.githubusercontent.com/RoxiMakesGames/sovpak/main/schema/sovpak-v3.schema.json",
   "id": "ollama",
   "name": "Ollama LLM",
   "version": "1.0.0",
-  "description": "Local LLM inference via Ollama — models, chat, and API access",
+  "description": "Local LLM inference via Ollama \u2014 models, chat, and API access",
   "license": "AGPL-3.0",
   "author": {
     "name": "Sovereign Infrastructure Team",
@@ -13,10 +13,17 @@
   "taxonomy": {
     "tier": "opt",
     "relations": [
-      { "type": "depends", "target": "sovctl" }
+      {
+        "type": "depends",
+        "target": "sovctl"
+      }
     ]
   },
-  "tags": ["service", "ai", "llm"],
+  "tags": [
+    "service",
+    "ai",
+    "llm"
+  ],
   "upstream": {
     "name": "Ollama",
     "homepage": "https://ollama.com",
