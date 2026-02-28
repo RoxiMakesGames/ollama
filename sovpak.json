@@ -1,9 +1,9 @@
 {
-  "$schema": "https://raw.githubusercontent.com/RoxiMakesGames/sovpak/main/schema/sovpak-v3.schema.json",
+  "$schema": "https://sovereign.dev/schemas/package/4.0.0",
   "id": "ollama",
   "name": "Ollama LLM",
   "version": "1.0.0",
-  "description": "Local LLM inference via Ollama \u2014 models, chat, and API access",
+  "description": "Local LLM inference via Ollama — models, chat, and API access",
   "license": "AGPL-3.0",
   "author": {
     "name": "Sovereign Infrastructure Team",
@@ -29,15 +29,20 @@
     "homepage": "https://ollama.com",
     "license": "MIT"
   },
-  "contents": {
-    "plugin": null,
-    "gitops": {
-      "kustomization": "k8s/kustomization.yaml",
-      "resources": "k8s/"
+  "deployments": [
+    {
+      "platform": "kubernetes",
+      "path": "k8s/",
+      "files": {
+        "kustomization": "kustomization.yaml"
+      }
     },
-    "container": {
-      "image": "ollama/ollama:latest",
-      "compose": "docker/compose.yaml"
+    {
+      "platform": "docker",
+      "path": "docker/",
+      "files": {
+        "compose": "compose.yaml"
+      }
     }
-  }
+  ]
 }
