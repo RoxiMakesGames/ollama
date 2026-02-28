@@ -17,7 +17,7 @@
 sovctl package install ollama
 
 # Manual — Kubernetes
-kubectl apply -k k8s/
+kubectl apply -k infra/
 
 # Manual — Docker Compose
 docker compose -f docker-compose.yaml -f packages/ollama/docker/compose.yaml up -d
@@ -32,7 +32,7 @@ ollama/
 ├── plugin/                    # Panel UI plugin
 │   ├── index.js
 │   └── *.jsx
-├── k8s/                       # Kubernetes manifests
+├── infra/                       # Kubernetes manifests
 │   ├── kustomization.yaml
 │   └── *.yaml
 ├── docker/                    # Docker Compose fragment
